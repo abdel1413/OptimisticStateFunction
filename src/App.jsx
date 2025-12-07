@@ -5,13 +5,13 @@ import { deliveryMessage } from '../actions'
 import { Thread } from '../Thread'
 
 function App() {
-const [messages, setMessages]=useState({message: 'Hello World!', sending: false, key:1})
+const [messages, setMessages]=useState([{text: 'Hello World!', sending: false, key:1}])
 
 
 async function handleSend(formData){
   const sentMessage = await deliveryMessage(formData.get('message'))
   startTransition(()=>{
-    setMessages({messages: sentMessage, ...messages})
+    setMessages((messages)=>[{ text: sentMessage, ...messages}])
   }
 
   )
