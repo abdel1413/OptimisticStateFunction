@@ -1,43 +1,43 @@
  import React, { startTransition, useOptimistic } from 'react';
-export function Thread({messages, handleSend,}) {
-
-   
-    const formRef = React.useRef(null); 
-
-    function formAction(formData){
-        const message = formData.get('message')
-    
-        addOptimisticMessage(message)
-        formRef.current.reset();
-        startTransition(async()=>{
-
-       await handleSend(formData)
-        })
-    }
-
-     const [optimisticMessages, addOptimisticMessage] =useOptimistic(messages,
-        (state, newMessage) => 
-        [{text: newMessage, sending: true}, ...state] 
-    );
 
 
-  
-  return (
-    <div>
-       <form action={formAction}ref={formRef}>
-        <input type="text" name="message" placeholder='Enter a text' />
-        <button type="submit">Send</button>
-       </form>
-         <ol>
-        {optimisticMessages.map((msg, index) => (
-              
-            <li key={index} style={{opacity: msg.sending ? 0.5 : 1}}>
-                {msg.text}
-                {!!msg.sending && ' (sending...)'}
-            </li>
-        ))}
-        
-       </ol>
-    </div>
+export function Thread({ messages, sendMessageAction }) {
+  const formRef = React.useRef();
+  function formAction(formData) {
+    addOptimisticMessage(formData.get("message"));
+    formRef.current.reset();
+    startTransition(async () => {
+      await sendMessageAction(formData);
+    });
+  }
+  const [optimisticMessages, addOptimisticMessage] = useOptimistic(
+    messages,
+    (state, newMessage) => [
+      {
+        text: newMessage,
+        sending: true
+      },
+      ...state,
+    ]
   );
-}   
+
+  return (
+    <>
+      <form action={formAction} ref={formRef}>
+        
+        <input type="text" name="message"  />
+        <button type="submit">Send</button>
+      </form>
+      {optimisticMessages.map((message, index) => (
+       
+
+        <div key={index} style={{ opacity: message.sending ? 0.5 : 1 }}>
+          {message.text}
+          {!!message.sending && <small> (Sending...)</small>}
+        </div>
+       
+      ))}
+      
+    </>
+  );
+}
