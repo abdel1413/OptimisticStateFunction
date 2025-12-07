@@ -27,7 +27,7 @@ export function Thread({ messages, sendMessageAction }) {
     <>
       <form action={formAction} ref={formRef}>
         {/* <div className='float-container'> */}
-        <input type="text" name="message" id='input-text' />
+        <input type="text" name="message" id='input-text' placeholder=' ' />
          <label htmlFor="input-text">Enter a message</label>
         {/* </div> */}
         <button type="submit">Send</button>

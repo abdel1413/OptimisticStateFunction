@@ -36,7 +36,7 @@ label{
   top:0;
   left:55px;
     pointer-events: none;
-  transition: 0.2s ease all;
+  transition: 0.3s ease-out;
   background-color: transparent;
  
 }
@@ -48,9 +48,9 @@ form button{
 }
 
   form input:focus + label,
-  form input:not(:placeholder-shown) + label{
+  form input:not(:placeholder-shown) + label {
     top:-9px;
-    left:7px;
+    left:13px;
     font-size:12px;
     background-color: white;
     color:#646cff;
