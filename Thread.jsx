@@ -3,6 +3,7 @@
 
 export function Thread({ messages, sendMessageAction }) {
   const formRef = React.useRef();
+
   function formAction(formData) {
     addOptimisticMessage(formData.get("message"));
     formRef.current.reset();
@@ -10,6 +11,7 @@ export function Thread({ messages, sendMessageAction }) {
       await sendMessageAction(formData);
     });
   }
+
   const [optimisticMessages, addOptimisticMessage] = useOptimistic(
     messages,
     (state, newMessage) => [
@@ -24,15 +26,13 @@ export function Thread({ messages, sendMessageAction }) {
   return (
     <>
       <form action={formAction} ref={formRef}>
-        <div className='float-container'>
+        {/* <div className='float-container'> */}
         <input type="text" name="message" id='input-text' />
          <label htmlFor="input-text">Enter a message</label>
-        </div>
+        {/* </div> */}
         <button type="submit">Send</button>
       </form>
       {optimisticMessages.map((message, index) => (
-       
-
         <div key={index} style={{ opacity: message.sending ? 0.5 : 1 }}>
           {message.text}
           {!!message.sending && <small> (Sending...)</small>}

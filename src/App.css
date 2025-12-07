@@ -7,37 +7,48 @@
 
 form{
   display: flex;
-  justify-content: center;
-  align-items: center;
-  gap:10px;
+  position: relative;
+  justify-content: space-between;
   width: 300px;
+  padding: 0 5px;
+ 
 }
 
 .float-container {
 position: relative;
-margin: 10px;
+margin: 5px 0;
+border: 2px solid red;
+ width: 250px;
+padding-top: 10px;
+height: 40px;
 }
 
 
  input{
   padding:5px;
   font-size:12px;
-  width: 100%;
+  width: 90%;
 
 }
 
 label{
   position: absolute;
   top:0;
-  left:10px;
+  left:55px;
     pointer-events: none;
   transition: 0.2s ease all;
   background-color: transparent;
  
 }
 
-  input:focus + label,
-  input:not(:placeholder-shown) + label{
+form button{
+  padding: 0.5em 0.6em;
+  
+  
+}
+
+  form input:focus + label,
+  form input:not(:placeholder-shown) + label{
     top:-9px;
     left:7px;
     font-size:12px;
