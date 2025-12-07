@@ -24,8 +24,10 @@ export function Thread({ messages, sendMessageAction }) {
   return (
     <>
       <form action={formAction} ref={formRef}>
-        
-        <input type="text" name="message"  />
+        <div className='float-container'>
+        <input type="text" name="message" id='input-text' />
+         <label htmlFor="input-text">Enter a message</label>
+        </div>
         <button type="submit">Send</button>
       </form>
       {optimisticMessages.map((message, index) => (
