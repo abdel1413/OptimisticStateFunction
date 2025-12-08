@@ -94,6 +94,66 @@ form button{
     color:#FFFFFF;
   }
 
+
+  .loading{
+    display: flex;
+    justify-content:end;
+    align-items: end;
+    width: 50px;
+    height: 50px;
+    gap: 5px
+    float: right;
+    /* border-top: 2px solid #646cff; */
+    
+
+   
+
+  }
+  .loading span{
+float: right;
+    width: 2px;
+    height: 20px;
+    background-color:#646cff;
+    animation:scale 0.8s  ease-in-out  infinite;
+  }
+
+  .loading span:nth-child(2){
+    animation-delay: -0.8s;
+    background-color: yellow;
+  }
+  .loading span:nth-child(3){
+    animation-delay:-0.7s;
+    background-color: #1a1a1a;
+  } 
+  .loading span:nth-child(4){
+    animation-delay:-0.6s;
+    background-color: #646cff;
+  }
+  .loading span:nth-child(5){
+    animation-delay:-0.5s;
+    background-color: white;
+  }
+  .loading span:nth-child(6){
+    animation-delay:-0.4s;
+    background-color: aquamarine;
+  }
+  
+  
+
+/* @keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+
+} */
+@keyframes scale {
+  0%,40%, 100% { 
+    transform: scaleY(0.07); 
+  }
+20% , 50%, 60%{ 
+  transform: scaleY(1);
+ }
+} 
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;

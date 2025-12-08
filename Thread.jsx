@@ -9,7 +9,7 @@ export function Thread({ messages, sendMessageAction }) {
     addOptimisticMessage(formData.get("message"));
 
     formRef.current.reset();
-    
+
     startTransition(async () => {
       await sendMessageAction(formData);
     });
@@ -40,7 +40,14 @@ export function Thread({ messages, sendMessageAction }) {
       {optimisticMessages.map((message, index) => (
         <div key={index} style={{ opacity: message.sending ? 0.5 : 1 }}>
           {message.text}
-          {!!message.sending && <small> (Sending...)</small>}
+          {!!message.sending && <small className="loading"> 
+          {/* ( sending....  ) */}
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+            </small>}
         </div>
        
       ))}
