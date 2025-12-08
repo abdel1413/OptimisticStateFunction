@@ -4,11 +4,14 @@ import './App.css';
 import { Thread } from '../Thread'
 import { deliveryMessage } from '../actions';
 
-function App() { const [messages, setMessages] = useState([
+function App() {
+  
+  const [messages, setMessages] = useState([
     { text: "Hello there!", sending: false, key: 1 }
   ]);
   async function sendMessageAction(formData) {
-    const sentMessage = await deliveryMessage (formData.get("message"));
+    const sentMessage = await deliveryMessage(formData.get("message"));
+    
     startTransition(() => {
       setMessages((messages) => [{ text: sentMessage }, ...messages]);
     })
